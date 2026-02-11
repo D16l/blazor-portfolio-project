@@ -1,0 +1,96 @@
+﻿@inject VisualElementService VisualElementService
+
+<section class="snt-section" aria-labelledby="about-title">
+
+    <div class="presentation">
+        <div class="title-block">
+
+            @if (Stars is not null)
+            {
+                <img src="@Stars" alt="" aria-hidden="true" class="stars">
+            }
+
+            <h2 id="about-title" class="hello">
+                <span class="line">Olá, me chamo</span>
+                <span class="hello s2">Yasmin</span>
+            </h2>
+        </div>
+
+        <p class="about-me">
+            Sou uma designer curiosa, movida pelo aprendizado contínuo, explorando cursos e materiais online.
+            Atualmente, curso Design na FURB.
+        </p>
+    </div>
+
+    <div class="photo-and-contact">
+        <div class="contacts">
+            <h3 class="contacts-title">Contatos</h3>
+            <ul>
+                <li>
+                    <img src="@Localization" alt="" aria-hidden="true">
+                    <span>SC - Brasil</span>
+                </li>
+                <li>
+                    <img src="@Email" alt="" aria-hidden="true">
+                    <a href="mailto:ygxavier.yx@gmail.com">
+                        ygxavier.yx@gmail.com
+                    </a>
+                </li>
+                <li>
+                    <img src="@Phone" alt="" aria-hidden="true">
+                    <a
+                        href="https://wa.me/5547999975095"
+                        target="_blank"
+                        rel="noreferrer nofollow"
+                        aria-label="Abrir conversa no WhatsApp em nova aba">
+                        +55 (47) 9 9997-5095
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        @if (Photo is not null)
+        {
+            <div class="photo-wrapper">
+                <img src="@Photo" alt="Foto de Yasmin ao lado direito da tela" id="photo">
+            </div>
+        }
+    </div>
+
+</section>
+
+@* Get the strings from the VisualElementService class to load the images *@
+@code {
+
+    private string? Photo;
+    private string? Stars;
+    private string? Email;
+    private string? Localization;
+    private string? Phone;
+
+    // In case the assets.json is already loaded
+    protected override void OnInitialized()
+    {
+        VisualElementService.OnChange += OnServiceChanged;
+        Photo = VisualElementService.Photos.FirstOrDefault(p => p.EndsWith("2.webp"));
+        Stars = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("green_double_star.svg"));
+        Email = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("email.svg"));
+        Localization = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("localization.svg"));
+        Phone = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("phone.svg"));
+    }
+    // If the assets.json isn't loaded, re-render the componets with the updated list
+    private void OnServiceChanged()
+    {
+        Photo = VisualElementService.Photos.FirstOrDefault(p => p.EndsWith("2.webp"));
+        Stars = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("green_double_star.svg"));
+        Email = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("email.svg"));
+        Localization = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("localization.svg"));
+        Phone = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("phone.svg"));
+        InvokeAsync(StateHasChanged);
+    }
+    //Unsubscribes the action for this component
+    public void Dispose()
+    {
+        VisualElementService.OnChange -= OnServiceChanged;
+    }
+}

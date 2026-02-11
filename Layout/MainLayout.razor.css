@@ -1,0 +1,17 @@
+/* ===================================================
+   Main Layout classes
+   Used in: Layout/MainLayout.razor
+   =================================================== */
+
+.site-footer p{
+    font-size: clamp(0.8rem,0.7cqw,1rem);
+    pointer-events: none;
+    font-family: var(--font-primary);
+    padding-left: 1rem;
+    margin-bottom: .2rem;
+}
+
+.site-footer a {
+    color: black;
+    pointer-events: all;
+}

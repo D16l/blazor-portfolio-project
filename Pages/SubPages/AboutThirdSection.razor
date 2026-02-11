@@ -1,0 +1,161 @@
+﻿@inject VisualElementService VisualElementService
+
+<section class="thd-section" aria-labelledby="academic-title">
+
+    <div class="top">
+
+        <div class="sub-top">
+
+            <section class="acdmc-bg" aria-labelledby="academic-title">
+                <h3 id="academic-title" class="acdmc-bg-title">Formação Acadêmica</h3>
+
+                <ul class="acdmc-bg-items">
+                    <li class="acdmc-bg-list">
+                        <img src="@PinkStar" alt="" aria-hidden="true" class="list-star">
+                        <span class="list-year">2026</span>
+                        <p>Bacharelado em Design – FURB</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="exp" aria-labelledby="experience-title">
+                <h3 id="experience-title" class="exp-title">Experiências</h3>
+
+                <article class="exp-list">
+                    <ul class="exp-list-item">
+                        <li class="exp-list-item-title">
+                            <img src="@YellowStar" alt="" aria-hidden="true" class="list-star">
+                            <span class="list-year">2024–2025</span>
+                        </li>
+
+                        <li class="exp-list-item-body">
+                            <p class="exp-list-item-body-title">
+                                <strong>Auxiliar Administrativo</strong>
+                            </p>
+                            <p class="exp-list-item-body-desc">
+                                Criação de posts para redes sociais, stories, cartões e conteúdos gráficos em geral.
+                                Uso do Canva.
+                            </p>
+                        </li>
+
+                        <li class="exp-list-item-keywords" aria-label="Competências desenvolvidas">
+                            <span>Comunicação</span>
+                            <span>Criatividade</span>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+        </div>
+
+        <section class="abltys" aria-labelledby="skills-title">
+            <div class="abltys-title">
+                <h3 id="skills-title">Habilidades Técnicas</h3>
+            </div>
+            <section class="sftwrs-tools" aria-labelledby="tools-title">
+                <h4 id="tools-title">Ferramentas de Software</h4>
+
+                <ul class="sftwrs-tools-icons">
+                    <li>
+                        <img src="@Affinity" alt="Affinity Designer">
+                    </li>
+                    <li>
+                        <img src="@Canva" alt="Canva">
+                    </li>
+                </ul>
+            </section>
+
+            <section class="svces" aria-labelledby="services-title">
+                <h4 id="services-title" class="svces-title">Design e Criação</h4>
+
+                <ul class="svces-keywords">
+                    <li><span>Ilustração</span></li>
+                    <li><span>Posts e Stories</span></li>
+                    <li><span>Cartões</span></li>
+                    <li><span>Teoria das Cores</span></li>
+                    <li><span>Composição Visual</span></li>
+                </ul>
+            </section>
+        </section>
+    </div>
+
+    <div class="bottom">
+        <div class="lng-nd-itrts">
+
+            <section class="lng" aria-labelledby="languages-title">
+                <h3 id="languages-title" class="lng-title">Idiomas</h3>
+
+                <ul class="lng-items">
+                    <li>
+                        <h4 class="lng-items-title">Inglês</h4>
+                        <span class="lng-items-desc">Intermediário</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="itrts" aria-labelledby="hobbies-title">
+                <h3 id="hobbies-title" class="itrts-title">Hobbies</h3>
+
+                <ul class="itrts-items">
+                    <li class="itrts-icons">
+                        <img src="@DogFootPrint" alt="Cães">
+                        <span>Cães</span>
+                    </li>
+                    <li class="itrts-icons">
+                        <img src="@PaintSplash" alt="Pintura">
+                        <span>Pintura</span>
+                    </li>
+                    <li class="itrts-icons">
+                        <img src="@Bicycle" alt="Bicicleta">
+                        <span>Bicicleta</span>
+                    </li>
+                </ul>
+            </section>
+
+        </div>
+    </div>
+</section>
+
+@* Get the strings from the VisualElementService class to load the images *@
+@code {
+
+    private string? Photo;
+    private string? PinkStar;
+    private string? YellowStar;
+    private string? Affinity;
+    private string? Canva;
+    private string? DogFootPrint;
+    private string? PaintSplash;
+    private string? Bicycle;
+
+    // In case the assets.json is already loaded
+    protected override void OnInitialized()
+    {
+        VisualElementService.OnChange += OnServiceChanged;
+        Photo = VisualElementService.Photos.FirstOrDefault(p => p.EndsWith("1.jpeg"));
+        PinkStar = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("pink_star.svg"));
+        YellowStar = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("yellow_star.svg"));
+        Affinity = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("affinity.svg"));
+        Canva = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("canva.svg"));
+        DogFootPrint = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("dogfootprint.svg"));
+        PaintSplash = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("paintsplash.svg"));
+        Bicycle = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("bicycle.svg"));
+    }
+    // If the assets.json isn't loaded, re-render the componets with the updated list
+    private void OnServiceChanged()
+    {
+        Photo = VisualElementService.Photos.FirstOrDefault(p => p.EndsWith("1.jpeg"));
+        PinkStar = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("pink_star.svg"));
+        YellowStar = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("yellow_star.svg"));
+        Affinity = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("affinity.svg"));
+        Canva = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("canva.svg"));
+        DogFootPrint = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("dogfootprint.svg"));
+        PaintSplash = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("paintsplash.svg"));
+        Bicycle = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("bicycle.svg"));
+        InvokeAsync(StateHasChanged);
+    }
+    //Unsubscribes the action for this component
+    public void Dispose()
+    {
+        VisualElementService.OnChange -= OnServiceChanged;
+    }
+}

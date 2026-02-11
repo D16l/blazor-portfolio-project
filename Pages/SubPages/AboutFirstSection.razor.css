@@ -1,0 +1,197 @@
+﻿/* ===================================================
+   First section of About page layout
+   Responsible for the layout of the first section.
+   Used in: Pages/SubPages/AboutFirstSection.razor
+   =================================================== */
+
+.fst-section,
+.fst-sec-body {
+    box-sizing: border-box;
+}
+
+.fst-section{
+    color: #F9FAD9;
+    background-color: #174F54;
+    font-family: var(--font-primary);
+    width: 100%;
+    height: auto;
+}
+
+.fst-sec-header {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.fst-sec-header img {
+    width: 2.5rem;
+    margin: .5rem;
+}
+
+.fst-sec-body {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 8vw;
+}
+
+.fst-sec-body {
+    height: clamp(36rem, 80vh, 80rem);
+}
+
+.fst-sec-body .phrase-and-symbol {
+    margin-bottom: clamp(2rem, 8vh, 10rem);
+}
+
+
+.title-and-portrait {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+.title-and-portrait img {
+    width: clamp(20rem, 28cqw, 40rem);
+    border-radius: 1rem;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.title-wrapper {
+    position: absolute;
+    top: clamp(2rem, 2cqw, 4rem);
+    left: clamp(2rem, 8cqw, 10rem);
+    pointer-events: none;
+    margin: 0 0 0 3rem;
+    font-size: clamp(3rem, 5cqw, 9rem);
+}
+
+.title {
+    position: relative;
+    font-size: inherit;
+    font-family: var(--font-primary);
+    z-index: 3;
+    margin: 0;
+}
+
+.shadows {
+    position: absolute;
+    inset: 1rem;
+    font-family: var(--font-terciary);
+    font-weight: 300;
+    color: #F47467;
+    z-index: 1;
+    font-size: inherit;
+}
+
+.shadows span {
+    position: absolute;
+    white-space: nowrap;
+
+    transform:
+        translate(
+            calc(var(--i) * 2.2rem),
+            calc(var(--i) * clamp(4rem, 6cqw, 8rem))
+        )
+        scale(calc(1 + (var(--i) * 0.04)));
+
+    opacity: calc(1 - (var(--i) * 0.18));
+}
+
+.shadows span:nth-child(1) { --i: 1.1; }
+.shadows span:nth-child(2) { --i: 2.2; }
+.shadows span:nth-child(3) { --i: 3.3; }
+.shadows span:nth-child(4) { --i: 4.5; }
+
+.phrase-and-symbol {
+    justify-content: flex-end;
+    width: fit-content;
+    z-index: 3;
+}
+
+.phrase-and-symbol p {
+    padding-top: 20rem;
+    font-size: clamp(1.5rem, 2vw, 3rem);
+    font-family: var(--font-primary);
+}
+
+.line {
+    display: block;
+}
+
+@media (max-width: 700px) {
+
+    .fst-sec-header img {
+        width: 1.5rem;
+    }
+
+    .fst-sec-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .fst-sec-body{
+        flex-direction: column;
+    }
+
+    .phrase-and-symbol{
+        flex-direction: row;
+    }
+
+    .phrase-and-symbol p {
+        padding-top: 0;
+    }
+
+    .title-and-portrait{
+        flex-direction: column;
+    }
+
+    .title-and-portrait img {
+        width: clamp(15rem, 65cqw, 25rem);
+    }
+
+    .title-wrapper {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 0 0 1.5rem 0;
+        text-align: center;
+        font-size: 10cqw;
+    }
+
+    .shadows {
+        display: none;
+    }
+}
+
+@media (max-width: 870px) {
+    .fst-section{
+        height: 120svh;
+    }
+    .title-and-portrait{
+        flex-direction: column;
+    }
+
+    .title-wrapper {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 0 0 1.5rem 0;
+        text-align: center;
+    }
+
+    .shadows {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .fst-section {
+        height: 100svh;
+    }
+}

@@ -1,0 +1,229 @@
+﻿/* ===================================================
+   Second section of About page layout
+   Responsible for the layout of the second section.
+   Used in: Pages/SubPages/AboutSecondSection.razor
+   =================================================== */
+
+.snt-section {
+    width: 100%;
+    height: fit-content;
+    background-color: #e4dddb;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-x: clip;
+}
+
+.presentation {
+    top: 10rem;
+    position: sticky;
+    width: 100%;
+    font-family: var(--font-primary);
+    padding: 0 2rem 10rem 15cqw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 9rem;
+}
+
+@media (max-width: 1200px) {
+    .presentation {
+        padding-left: 8cqw;
+    }
+}
+
+.title-block {
+    position: relative;
+    display: inline-block;
+}
+
+.stars {
+    position: absolute;
+    left: -3.5rem;
+    top: .5rem;
+    width: 3rem;
+}
+
+.hello {
+    font-size: clamp(3rem, 6vw, 5rem);
+    margin: 0;
+    color: #584538;
+    line-height: 1.1;
+}
+
+.s2 {
+    display: inline-block;
+    color: #ce898c;
+}
+
+.about-me {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    text-align: left;
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    margin: 0;
+    color: #584538;
+    border-bottom: .2rem solid #c2a9ac;
+}
+
+.photo-and-contact {
+    width: 100%;
+    height: 100%;
+}
+
+.photo-and-contact #photo {
+    position: inherit;
+    width: clamp(10rem,65cqw,30rem);
+    object-fit: contain;
+}
+
+.photo-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.contacts {
+    width: clamp(20rem, 25vw, 30rem);
+    color: #fdfcf2;
+    background-color: #ce898c;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    height: 33rem;
+    transform: translateY(-3rem);
+}
+
+.contacts a,
+.contacts a:visited,
+.contacts a:hover,
+.contacts a:active {
+    color: #fdfcf2;
+    text-decoration: none;
+}
+
+.contacts ul {
+    padding: 0;
+}
+
+.contacts li {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: clamp(1rem, 2vw, 2rem);
+    font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+    font-family: var(--font-secondary);
+}
+
+.contacts img {
+    width: clamp(1.5rem, 2vw, 2rem);
+    margin-right: .5rem;
+}
+
+.contacts-title {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    margin: .3rem;
+    font-family: var(--font-primary);
+}
+
+.line {
+    display: block;
+}
+
+@media (min-width: 2000px) {
+    .about-me {
+        font-size: clamp(1.1rem, 2vw, 2rem);
+    }
+
+    .hello {
+        font-size: clamp(3rem, 6vw, 7rem);
+    }
+
+    .presentation {
+        margin-top: 15rem;
+    }
+
+    .stars {
+        left: -5.5rem;
+        width: 5rem;
+    }
+
+    .contacts {
+        width: clamp(20rem, 25vw, 35rem);
+        height: 43rem;
+    }
+
+    .contacts-title {
+        font-size: clamp(2rem, 3vw, 3.5rem);
+    }
+
+    .contacts img {
+        width: clamp(1.5rem, 2vw, 2.5rem);
+    }
+
+    .contacts li {
+        font-size: clamp(1.1rem, 1.8vw, 1.8rem);
+    }
+
+    .photo-and-contact #photo {
+        width: clamp(10rem, 65cqw, 35rem);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .snt-section {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 4rem 0;
+    }
+
+    .presentation {
+        top: 0;
+        padding: 0 2rem;
+        position: inherit;
+        margin: 0;
+    }
+
+    .presentation img {
+        display: none;
+    }
+
+    .photo-and-contact {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+    }
+
+    .photo-and-contact #photo {
+        display: none;
+    }
+
+    .contacts {
+        margin: 0 auto !important;
+        width: calc(100% - 4rem);
+        max-width: 32rem;
+        height: auto;
+        transform: none;
+    }
+    .contacts li {
+        display: inherit;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 680px){
+
+    .presentation {
+        top: 5rem;
+    }
+
+    .title-block img {
+        display: none;
+    }
+}

@@ -1,0 +1,36 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<NavButton />
+<main>
+    @Body
+    <footer class="site-footer">
+        <p>
+            © @DateTime.Now.Year Yasmin Gabrile Xavier. Todos os direitos reservados.<br />
+            Desenvolvedor —
+            <a href="https://github.com/D16l" target="_blank" rel="noopener noreferrer">
+                github.com/D16l
+            </a>
+        </p>
+    </footer>
+</main>
+
+@* Scroll to the top of the gallery page every time it's loaded *@
+@code {
+    protected override void OnInitialized()
+    {
+        Nav.LocationChanged += OnLocationChanged;
+    }
+
+    private async void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        await JS.InvokeVoidAsync("window.scrollTo", 0, 0);
+    }
+
+    // Removes listener when the componet is destroyed
+    public void Dispose()
+    {
+        Nav.LocationChanged -= OnLocationChanged;
+    }
+}

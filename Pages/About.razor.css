@@ -1,0 +1,4 @@
+/* Global class for all the subpages of the about page */
+img {
+    pointer-events: none;
+}

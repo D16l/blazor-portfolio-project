@@ -1,0 +1,27 @@
+/* ===================================================
+   Navigation global button classes
+   Used in: Assets/NavButton.razor
+   =================================================== */
+   
+.nav-container{
+    position: fixed;
+    background-color: #174F54;
+    width: clamp(3rem, 3.5vw, 5rem);
+    height: clamp(3rem, 3.5vw, 5rem);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 1rem;
+    top: 3rem;
+    z-index: 5;
+    border: 2px solid #F47467;
+}
+
+.nav-container img {
+    width: clamp(1.8rem, 2.3vw, 3rem);
+}
+
+.nav-link {
+    width: 100%;
+}

@@ -1,0 +1,72 @@
+﻿@page "/"
+@page "/galeria"
+@inject VisualElementService VisualElementService
+
+<HeadContent>
+    <meta name="description"
+          content="Galeria de trabalhos em design gráfico, ilustração e criação visual por Yasmin." />
+    <meta name="keywords"
+          content="designer gráfico, design gráfico, identidade visual, branding, Timbó, Santa Catarina, Blumenau" />
+    <meta name="author" content="Yasmin Gabriele Xavier" />
+</HeadContent>
+
+<PageTitle>Yasmin Xavier - Portfólio | Galeria</PageTitle>
+
+
+@if (images.Any())
+{
+    <section class="gallery">
+        @foreach (var item in images.Select((string img, int index) => new { img, index }))
+        {
+            <img src="@item.img"
+                 alt="Imagem"
+                 loading="lazy"
+                 class="gallery-img"
+                 data-delay="@($"{item.index * 0.15}s")"
+                 @onclick="() => OpenImage(item.img)" />
+        }
+    </section>
+
+    @if (SelectedImage is not null)
+    {
+        <div class="overlay" @onclick="CloseImage">
+            <img src="@SelectedImage"
+                 class="overlay-img"
+                 @onclick="CloseImage" />
+        </div>
+    }
+}
+else
+{
+    <section class="no-gallery">
+        <p>Carregando imagens…</p>
+    </section>
+}
+
+@* Get the strings from the VisualElementService class to load the images *@
+@code {
+    private string? SelectedImage;
+    private IEnumerable<string> images = [];
+    protected override void OnInitialized()
+    {
+        VisualElementService.OnChange += OnServiceChanged;
+        images = VisualElementService.Images;
+    }
+
+    //Re-renders the component after the global assets list is loaded
+    private void OnServiceChanged()
+    {
+        images = VisualElementService.Images;
+        InvokeAsync(StateHasChanged);
+    }
+
+    // Local functions for the responsivity in the images
+    void OpenImage(string img) => SelectedImage = img;
+    void CloseImage() => SelectedImage = null;
+
+    //Unsubscribes the action for this component
+    public void Dispose()
+    {
+        VisualElementService.OnChange -= OnServiceChanged;
+    }
+}

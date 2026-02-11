@@ -1,0 +1,63 @@
+﻿@inject VisualElementService VisualElementService
+
+<section class="fst-section" aria-labelledby="intro-title">
+
+    <div class="fst-sec-header">
+        <img src="@Star" alt="" aria-hidden="true" loading="lazy">
+        <h2>Yasmin Gabriele Xavier</h2>
+    </div>
+
+    <div class="fst-sec-body">
+        <div class="title-and-portrait">
+
+            <div class="title-wrapper">
+                <h1 class="title">PORTFÓLIO</h1>
+
+                <div class="shadows" aria-hidden="true">
+                    <span>PORTFÓLIO</span>
+                    <span>PORTFÓLIO</span>
+                    <span>PORTFÓLIO</span>
+                    <span>PORTFÓLIO</span>
+                </div>
+            </div>
+
+            <img src="@Photo" alt="Retrato de Yasmin">
+        </div>
+
+        <div class="phrase-and-symbol">
+            <p>
+                <span class="line">Crio</span>
+                <span class="line">impressões que</span>
+                <span class="line">permanecem.</span>
+            </p>
+        </div>
+    </div>
+
+</section>
+
+@* Get the strings from the VisualElementService class to load the images *@
+@code {
+
+    private string? Photo;
+    private string? Star;
+
+    // In case the assets.json is already loaded
+    protected override void OnInitialized()
+    {
+        VisualElementService.OnChange += OnServiceChanged;
+        Photo = VisualElementService.Photos.FirstOrDefault(p => p.EndsWith("1.webp"));
+        Star = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("pink_star.svg"));
+    }
+    // If the assets.json isn't loaded, re-render the componets with the updated list
+    private void OnServiceChanged()
+    {
+        Photo = VisualElementService.Photos.FirstOrDefault(p => p.EndsWith("1.webp"));
+        Star = VisualElementService.Icons.FirstOrDefault(p => p.EndsWith("pink_star.svg"));
+        InvokeAsync(StateHasChanged);
+    }
+    //Unsubscribes the action for this component
+    public void Dispose()
+    {
+        VisualElementService.OnChange -= OnServiceChanged;
+    }
+}

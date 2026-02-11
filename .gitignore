@@ -1,0 +1,69 @@
+############################################
+# Build / Output
+############################################
+bin/
+obj/
+out/
+
+############################################
+# User-specific / IDE
+############################################
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+############################################
+# OS
+############################################
+.DS_Store
+Thumbs.db
+
+############################################
+# Logs
+############################################
+*.log
+
+############################################
+# NuGet
+############################################
+packages/
+*.nupkg
+*.snupkg
+.nuget/
+
+############################################
+# Blazor / ASP.NET
+############################################
+# Published files
+wwwroot/_framework/
+wwwroot/_content/
+
+# Service worker
+service-worker.js
+service-worker.published.js
+
+############################################
+# Environment / Secrets
+############################################
+appsettings.*.json
+!appsettings.json
+
+############################################
+# WWWROOT - Static assets (ignored)
+############################################
+wwwroot/icons/
+wwwroot/photos/
+wwwroot/images/
+
+# Ignore specific file
+wwwroot/assets.json
+
+############################################
+# Optional: Generated CSS/JS (if using bundlers)
+############################################
+wwwroot/css/*.min.css
+wwwroot/js/*.min.js

@@ -1,0 +1,68 @@
+﻿@inject NavigationManager Nav
+
+<nav class="nav-container" aria-label="Navegação principal">
+    <NavLink href="@TargetLink"
+             class="nav-link"
+             aria-label="@AriaLabel">
+        <img src="@LinkToImg"
+             alt=""
+             aria-hidden="true"
+             draggable="false" />
+    </NavLink>
+</nav>
+
+@* Functions to handle the navigation button responsivity *@
+@code {
+    private enum PageGroup
+    {
+        Gallery,
+        About
+    }
+
+    private PageGroup _currentGroup;
+
+    // Updates the navigation button when page is initialized
+    protected override void OnInitialized()
+    {
+        UpdateGroup();
+        Nav.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        UpdateGroup();
+        InvokeAsync(StateHasChanged);
+    }
+
+    // Update the current group that is used in the others validations
+    private void UpdateGroup()
+    {
+        var path = new Uri(Nav.Uri).AbsolutePath.ToLowerInvariant();
+
+        _currentGroup =
+            path.StartsWith("/sobre") ? PageGroup.About :
+            PageGroup.Gallery;
+    }
+
+    // Update the icon to match the current page
+    private string LinkToImg =>
+        _currentGroup == PageGroup.Gallery
+            ? "/icons/about.svg"
+            : "/icons/pink_gallery.svg";
+    // Update the link to the respectively page
+    private string TargetLink =>
+        _currentGroup == PageGroup.Gallery
+            ? "/sobre"
+            : "/galeria";
+    // Update the aria label to match the current page
+    private string AriaLabel =>
+        _currentGroup == PageGroup.Gallery
+            ? "Ir para a página Sobre"
+            : "Ir para a galeria";
+
+    // Removes listener when the componet is destroyed
+    public void Dispose()
+    {
+        Nav.LocationChanged -= OnLocationChanged;
+    }
+}

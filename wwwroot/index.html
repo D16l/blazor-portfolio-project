@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <meta property="og:title" content="Yasmin — Portfólio de Design" />
+    <meta property="og:description" content="Portfólio de design gráfico, ilustração e criação visual." />
+    <meta property="og:type" content="website" />
+
+    <base href="/" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="DesignPortfolio.styles.css" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/lovelo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Animate -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- Speculation Rules -->
+    <script type="speculationrules">
+    {
+        "prefetch": [
+            { "source": "list", "urls": ["/sobre"] }
+        ]
+    }
+    </script>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yasmin Xavier",
+        "jobTitle": "Designer Gráfico",
+        "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "SC",
+            "addressCountry": "BR"
+        },
+        "url": "https://xavier.art.br",
+        "sameAs": [
+            "https://github.com/yasminxav"
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <div id="app">Carregando…</div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="js/gallery-observer.js"></script>
+
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+    </script>
+</body>
+</html>
