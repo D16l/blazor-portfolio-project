@@ -26,7 +26,7 @@ O objetivo desse repositório é mostrar meu trajeto neste projeto e claro mostr
 
 No início do projeto estava tão focado em mostrar minha habilidade em criar componentes que tive que pivotar e começar do zero, onde então a criadora do visual do site Yasmin me ajudou a organizar a casa.
 
-Queria e ainda quero implementar telemetria no site usando opensearch e suas funcionalidades, não por ser o melhor nisso, mas para praticar com uma ferramenta de busca poderosa que é bem parecida com ElasticSearch, porém como ter miunha própria máquina e hospedar o site nela é financeiramente inviável preferi guardar na gaveta essa ideia.
+Queria e ainda quero implementar telemetria no site usando opensearch e suas funcionalidades, não por ser o melhor nisso, mas para praticar com uma ferramenta de busca poderosa que é bem parecida com ElasticSearch, porém como ter minha própria máquina e hospedar o site nela é financeiramente inviável preferi guardar na gaveta essa ideia.
 
 Falando em limitações, quase no final do projeto prescisei refatorar o código todo pois estava o fazendo em Blazor Server o que para mim e meu computador faziam sentido, afinal está funcionando na minha máquina, certo? Porém o servidor que estou hospedando teve outros planos e precisei fazer via WebAssembly que não é tão diferente mas me obrigou a pensar de uma forma diferente como eu iria entregar as imagens para o navegador e as otimizações que precisaria fazer para dar certo.
 
